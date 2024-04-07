@@ -59,7 +59,7 @@ public class SubjectJdbcTemplateRepository implements JdbcTemplateRepository {
     public void delete(Subject subject) {
         jdbcTemplate.update(
                 "DELETE FROM contact WHERE contact_id = ?",
-                subject.getSubjevtId();
+                subject.getSubjevtId()
         );
     }
 
