@@ -1,0 +1,11 @@
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BookReservationControllerV2 {
+    @PostMapping("/book-reservation")
+    public String reserveBook(@RequestParam String name, @RequestParam String bookTitle) {
+        return "감사합니다 " + name + "님, '" + bookTitle + "' 예약이 완료되었습니다!";
+    }
+}
