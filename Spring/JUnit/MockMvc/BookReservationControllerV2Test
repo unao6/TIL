@@ -1,0 +1,23 @@
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
+@WebMvcTest(BookReservationControllerV2.class)
+public class BookReservationControllerV2Test {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void testReserveBook() throws Exception {
+        mockMvc.perform(post("/book-reservation")
+                        .param("name", "엘리스")
+                        .param("bookTitle", "스프링 시작하기"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("감사합니다 엘리스님, '스프링 시작하기' 예약이 완료되었습니다!"));
+    }
+}
